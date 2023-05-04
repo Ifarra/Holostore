@@ -11,7 +11,7 @@ public class Main extends Application {
     public static final String CURRENCY = "¥";
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../views/market.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../views/sample.fxml"));
         primaryStage.setTitle("Holostore");
         primaryStage.setFullScreen(true);
         primaryStage.setScene(new Scene(root));

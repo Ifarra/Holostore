@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MyaccController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-position: 55% 20%;" styleClass="background-image" stylesheets="@../values/stylethree.css">
+         <effect>
+            <GaussianBlur radius="22.98" />
+         </effect>
+      </Pane>
+      <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: rgba(00,20,00,0.6);">
+         <children>
+            <ChoiceBox fx:id="myaccgender" layoutX="82.0" layoutY="347.0" prefHeight="28.0" prefWidth="242.0" style="-fx-text-fill: white;" styleClass="textfield" stylesheets="@../values/stylethree.css" />
+            <TextField fx:id="accuser" layoutX="81.0" layoutY="105.0" prefHeight="33.0" prefWidth="242.0" promptText="Username" styleClass="textfield" stylesheets="@../values/stylethree.css" />
+            <TextField fx:id="myaccpass" layoutX="81.0" layoutY="170.0" prefHeight="33.0" prefWidth="242.0" promptText="Password" styleClass="textfield" stylesheets="@../values/stylethree.css" />
+            <TextField fx:id="myaccemail" layoutX="81.0" layoutY="231.0" prefHeight="33.0" prefWidth="242.0" promptText="Email" styleClass="textfield" stylesheets="@../values/stylethree.css" />
+            <TextField fx:id="myaccaddress" layoutX="82.0" layoutY="286.0" prefHeight="33.0" prefWidth="242.0" promptText="Address" styleClass="textfield" stylesheets="@../values/stylethree.css" />
+            <Button fx:id="myaccupdate" layoutX="210.0" layoutY="399.0" mnemonicParsing="false" onAction="#Updateuserreal" prefHeight="33.0" prefWidth="104.0" style="-fx-background-color: white;" text=" Update" />
+            <Button fx:id="myaccdelete" layoutX="154.0" layoutY="526.0" mnemonicParsing="false" onAction="#Deleteuser" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: white;" text="Delete account" />
+            <Button fx:id="myaccupdate1" layoutX="81.0" layoutY="399.0" mnemonicParsing="false" onAction="#Updateuser" prefHeight="33.0" prefWidth="104.0" style="-fx-background-color: white;" text="Insert" />
+            <Button layoutX="81.0" layoutY="49.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="17.0" prefWidth="68.0" style="-fx-background-color: white;" text="Refresh" />
+            <Label layoutX="84.0" layoutY="88.0" text="Current Username :" textFill="WHITE" />
+            <Label layoutX="84.0" layoutY="153.0" text="Current Password :" textFill="WHITE" />
+            <Label layoutX="84.0" layoutY="214.0" text="Current Email :" textFill="WHITE" />
+            <Label layoutX="84.0" layoutY="269.0" text="Current Address :" textFill="WHITE" />
+            <Label layoutX="84.0" layoutY="330.0" text="Current Gender :" textFill="WHITE" />
+            <Label fx:id="userlbl" layoutX="202.0" layoutY="88.0" prefHeight="17.0" prefWidth="119.0" text="Null" textFill="WHITE" />
+            <Label fx:id="passlbl" layoutX="202.0" layoutY="153.0" prefHeight="17.0" prefWidth="119.0" text="Null" textFill="WHITE" />
+            <Label fx:id="emaillbl" layoutX="202.0" layoutY="214.0" prefHeight="17.0" prefWidth="119.0" text="Null" textFill="WHITE" />
+            <Label fx:id="addresslbl" layoutX="202.0" layoutY="269.0" prefHeight="17.0" prefWidth="119.0" text="Null" textFill="WHITE" />
+            <Label fx:id="genderlbl" layoutX="202.0" layoutY="330.0" prefHeight="17.0" prefWidth="119.0" text="Null" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

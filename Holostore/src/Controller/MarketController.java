@@ -1,52 +1,90 @@
 package Controller;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import main.Main;
-import main.MyListener;
-import model.Merch;
-
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import main.Main;
+import main.MyListener;
+import model.Merch;
+
 public class MarketController implements Initializable {
-    @FXML
-    private VBox chosenFruitCard;
-
-    @FXML
-    private Label fruitNameLable;
-
-    @FXML
-    private Label fruitPriceLabel;
     
-    @FXML
-    private Label itemName;
+	 @FXML
+	    private Button buybtn;
 
-    @FXML
-    private ImageView fruitImg;
+	    @FXML
+	    private VBox chosenFruitCard;
 
-    @FXML
-    private ScrollPane scroll;
+	    @FXML
+	    private Button exittxt;
 
-    @FXML
-    private GridPane grid;
+	    @FXML
+	    private ImageView fruitImg;
 
-    private List<Merch> merchs = new ArrayList<>();
-    private Image image;
-    private MyListener myListener;
+	    @FXML
+	    private Label fruitNameLable;
+
+	    @FXML
+	    private Label fruitPriceLabel;
+
+	    @FXML
+	    private GridPane grid;
+
+	    @FXML
+	    private Label itemName;
+
+	    @FXML
+	    private Button qtymin;
+
+	    @FXML
+	    private Button qtyplus;
+
+	    @FXML
+	    private TextField qtytxt;
+
+	    @FXML
+	    private ScrollPane scroll;
+
+	    @FXML
+	    private Label username;
+
+	  
+
+	    private static final String DB_URL = "jdbc:mysql://localhost:3306/login_system";
+	    private static final String DB_USER = "root";
+	    private static final String DB_PASSWORD = "rafiind1324";
+
+	    private List<Merch> merchs = new ArrayList<>();
+	    private Image image;
+	    private MyListener myListener;
 
     private List<Merch> getData() {
         List<Merch> merchs = new ArrayList<>();
@@ -102,7 +140,7 @@ public class MarketController implements Initializable {
 
         merch = new Merch();
         merch.setName("Moona");
-        merch.setPrice(669);
+        merch.setPrice(0.67);
         merch.setImgSrc("/img/Hitam.png");
         merch.setItemName("Moona Hoshinova 3rd Anniversary Celebration");
         merch.setColor("2e0663");
@@ -142,7 +180,7 @@ public class MarketController implements Initializable {
 
         merch = new Merch();
         merch.setName("Uproar");
-        merch.setPrice(333);
+        merch.setPrice(3.33);
         merch.setImgSrc("/img/MerahPutih_1.png");
         merch.setItemName("UPROAR!! 1st Anniversary Celebration");
         merch.setColor("b01515");
@@ -174,7 +212,7 @@ public class MarketController implements Initializable {
 
         merch = new Merch();
         merch.setName("Moona");
-        merch.setPrice(669);
+        merch.setPrice(0.67);
         merch.setImgSrc("/img/Ungu_1.png");
         merch.setItemName("Moona Hoshinova 3rd Anniversary Celebration");
         merch.setColor("4e2e78");
@@ -199,6 +237,54 @@ public class MarketController implements Initializable {
         return merchs;
     }
 
+    public void qtyM (ActionEvent e) {
+    	int qty = Integer.parseInt(qtytxt.getText());
+    	if (qty > 1) {
+    		qty--;
+    		qtytxt.setText(String.valueOf(qty));
+    	}
+    }
+    
+    public void qtyP (ActionEvent e) {
+    	int qtyy = Integer.parseInt(qtytxt.getText());
+    	if (qtyy <= 19 && qtyy >= 1) {
+    		qtyy++;
+    		qtytxt.setText(String.valueOf(qtyy));
+    	}
+    }
+    
+    public void userclick (MouseEvent e) throws IOException, ClassNotFoundException {
+    	FXMLLoader fxmll = new FXMLLoader(getClass().getResource("../views/myacc.fxml"));
+    	Parent root1 = (Parent) fxmll.load();
+    	Stage stage = new Stage();
+    	stage.setTitle("Holostore");
+		stage.setScene(new Scene(root1));
+		stage.show();
+    }
+    
+    private Stage stage;
+	private Scene scene;
+	private Parent root;
+    
+    public void userexit (MouseEvent e) throws IOException, ClassNotFoundException, SQLException {
+    	exit();
+    	root  = FXMLLoader.load(getClass().getResource("../views/sample.fxml"));
+		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+		stage.setTitle("Holostore");
+		scene = new Scene(root);
+		stage.setFullScreen(false);
+		stage.setScene(scene);
+		stage.setFullScreen(true);
+		stage.show();
+    }
+    
+    public void exit() throws SQLException {
+    	Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+    	String query = "DELETE FROM log"; // replace with your table name
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(query);
+    }
+    
     private void setChosenFruit(Merch merch) {
         fruitNameLable.setText(merch.getName());
         fruitPriceLabel.setText(Main.CURRENCY + merch.getPrice());
@@ -207,6 +293,7 @@ public class MarketController implements Initializable {
         itemName.setText(merch.getItemName());
         chosenFruitCard.setStyle("-fx-background-color: #" + merch.getColor() + ";\n" +
                 "    -fx-background-radius: 30;");
+        qtytxt.setText("1");
     }
 
     @Override

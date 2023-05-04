@@ -1,0 +1,53 @@
+.background-image{
+    -fx-background-image: url("Risu.jpg");
+    -fx-background-repeat: stretch;
+}
+
+.top-bar{
+    -fx-background-color: rgba(221, 115, 115,0.8);
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.pink-button{
+    -fx-background-color: #FF1145;
+    -fx-background-radius: 100;
+}
+
+.purple-button{
+    -fx-background-color: #511032;
+    -fx-background-radius: 100;
+}
+
+.purple-button:hover{
+    -fx-background-color: #000000;
+}
+
+.pink-button:hover{
+    -fx-background-color: #000000;
+}
+
+.purple-button:pressed{
+    -fx-background-color: rgba(221, 115, 115,0.8);
+}
+
+.pink-button:pressed{
+    -fx-background-color: rgba(221, 115, 115,0.8);
+}
+
+.transparent-button{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-color: #FFFFFF;
+    -fx-border-radius: 100;
+}
+
+.shadow{
+    -fx-effect: dropShadow(one-pass-box,rgba(0,0,0,0.3), 10.0 , 0.0 , 0.0, 10.0);
+}
+
+.offer-background{
+    -fx-background-color: rgba(0, 0, 0,0.8);
+    -fx-background-radius: 30;
+}

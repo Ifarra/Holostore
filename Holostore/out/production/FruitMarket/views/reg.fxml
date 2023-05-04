@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.MotionBlur?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-position: 43% 30%;" styleClass="background-image" stylesheets="@../values/styletwo.css">
+         <effect>
+            <MotionBlur />
+         </effect>
+      </Pane>
+      <Pane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: rgba(00,00,20,0.5);">
+         <children>
+            <Label layoutX="88.0" layoutY="82.0" text="HOLOSTORE" textFill="WHITE">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <TextField fx:id="reguser" layoutX="96.0" layoutY="210.0" prefHeight="33.0" prefWidth="209.0" promptText=" Username (ID)" style="-fx-background-color: transparent; -fx-border-color: white; -fx-focus-traversable: false; -fx-text-fill: white; -fx-border-radius: 5px;" />
+            <TextField fx:id="regpass" layoutX="96.0" layoutY="256.0" prefHeight="33.0" prefWidth="209.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-focus-traversable: false; -fx-text-fill: white; -fx-border-radius: 5px;" />
+            <TextField fx:id="regemail" layoutX="96.0" layoutY="300.0" prefHeight="33.0" prefWidth="209.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: white; -fx-focus-traversable: false; -fx-text-fill: white; -fx-border-radius: 5px;" />
+            <Button fx:id="regbtnfr" layoutX="135.0" layoutY="366.0" mnemonicParsing="false" onAction="#Regvalfr" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: white;" text="Register" />
+            <Label fx:id="regalert" layoutX="148.0" layoutY="163.0" text="Create new account" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

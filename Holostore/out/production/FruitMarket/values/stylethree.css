@@ -1,0 +1,11 @@
+.background-image{
+    -fx-background-image: url("Iofi.jpg");
+    -fx-background-repeat: stretch;
+}
+
+.textfield{
+	-fx-text-fill: white;
+	-fx-background-color: transparent;
+	-fx-border-radius: 20px;
+	-fx-border-color: white;
+}
